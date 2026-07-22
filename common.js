@@ -94,6 +94,8 @@
     fetch(ROOT + 'partials/bottom.html')
       .then(r => r.text())
       .then(html => {
+        html = html.replace(/href="\.\//g, `href="${ROOT}`);
+        html = html.replace(/src="\.\//g, `src="${ROOT}`);
         mount.innerHTML = html;
         mount.querySelectorAll('.section').forEach(sec => sec.classList.add('is-inview'));
 
